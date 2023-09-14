@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Define your custom styles for dark mode here */
+        body[data-theme='dark'] {
+            background-color: #121212; /* Dark background color */
+            color: #e0e0e0; /* Light text color */
+        }
+    </style>
+    <title>Privacy Policy</title>
+</head>
+<body data-theme="light">
+    <div class="container">
+        <div class="d-flex justify-content-end">
+            <button onclick="toggleTheme()" class="btn btn-outline-secondary btn-sm">Toggle Dark Mode</button>
+        </div>
+        <h1 class="my-4">Privacy Policy</h1>
+        <p>
+            This application does not collect or store any personal data. 
+            Any data you input into the forms on this site is used solely 
+            for the purpose of providing the service requested and is not 
+            stored or shared with any third parties.
+        </p>
+        <a href="/" class="btn btn-link">Home</a>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // On page load, apply the user's preferred theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+</body>
+</html>

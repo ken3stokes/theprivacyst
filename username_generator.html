@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+    .navbar, .btn-primary {
+        background-color: #3498db;
+    }
+    .btn-secondary {
+        background-color: #2ecc71;
+    }
+    .alert-info {
+        background-color: #3498db;
+        color: #fff;
+    }
+    :root {
+        --background-color-light: #ffffff;
+        --background-color-dark: #121212;
+        --text-color-light: #000000;
+        --text-color-dark: #e0e0e0;
+    }
+    [data-theme='light'] {
+        --background-color: var(--background-color-light);
+        --text-color: var(--text-color-light);
+    }
+    [data-theme='dark'] {
+        --background-color: var(--background-color-dark);
+        --text-color: var(--text-color-dark);
+    }
+    body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+    }
+    .generated-data {
+        background-color: #ffffff; /* white background */
+        color: #000000; /* black text */
+    }
+</style>
+<title>Username Generator</title>
+</head>
+<body>
+<div class="container">
+    <div class="d-flex justify-content-end">
+        <button onclick="toggleTheme()" class="btn btn-outline-secondary btn-sm">Toggle Dark Mode</button>
+    </div>
+    {% if error_message %}
+    <div class="alert alert-danger">
+        {{ error_message }}
+    </div>
+{% endif %}
+
+    <h1 class="my-4">Username Generator</h1>
+    <form method="POST" class="mb-3">
+        <button type="submit" class="btn btn-primary">Generate Username</button>
+    </form>
+    {% if username %}
+    <div>
+        <h2>Generated Username</h2>
+        <pre id="username" class="p-2 rounded generated-data">{{ username }}</pre>
+        <button onclick="copyToClipboard('#username')" class="btn btn-secondary">Copy to Clipboard</button>
+    </div>
+    {% endif %}
+    <a href="/" class="btn btn-link">Home</a>
+    </div>
+
+<script>
+function copyToClipboard(element) {
+    var text = document.querySelector(element).innerText;
+    var inputElement = document.createElement('input');
+    inputElement.type = 'text';
+    inputElement.value = text;
+    document.body.appendChild(inputElement);
+    inputElement.select();
+    document.execCommand('copy');
+    document.body.removeChild(inputElement);
+}
+
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+}
+
+// On page load, apply the user's preferred theme
+const savedTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+</script>
+</body>
+</html>
