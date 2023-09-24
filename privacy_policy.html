@@ -3,43 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Privacy Policy of The Privacyst - We value your privacy and do not collect or store any personal data.">
+    <meta name="keywords" content="Privacy Policy, The Privacyst, Data Protection">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Privacy Policy</title>
     <style>
-        /* Define your custom styles for dark mode here */
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            padding: 30px;
+        }
+        h1, h2, h3 {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
         body[data-theme='dark'] {
-            background-color: #121212; /* Dark background color */
-            color: #e0e0e0; /* Light text color */
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        nav {
+            margin-bottom: 20px;
+            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+        }
+        nav[data-theme='dark'] {
+            background-color: #121212;
+            border-color: #121212;
+        }
+        .btn-outline-secondary {
+            border-color: #007bff;
+            color: #007bff;
+        }
+        .btn-outline-secondary:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-top: 1px solid #e7e7e7;
+        }
+        footer[data-theme='dark'] {
+            background-color: #121212;
+            border-color: #121212;
+            color: #e0e0e0;
         }
     </style>
-    <title>Privacy Policy</title>
 </head>
 <body data-theme="light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" data-theme="light">
+        <div class="container">
+            <a class="navbar-brand" href="#">The Privacyst</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="user_guide">User Guide</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Release_Notes">Release Notes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="container">
         <div class="d-flex justify-content-end">
             <button onclick="toggleTheme()" class="btn btn-outline-secondary btn-sm">Toggle Dark Mode</button>
         </div>
-        <h1 class="my-4">Privacy Policy</h1>
+        <h2><i class="fas fa-shield-alt"></i> Privacy Policy</h2>
         <p>
-            This application does not collect or store any personal data. 
-            Any data you input into the forms on this site is used solely 
-            for the purpose of providing the service requested and is not 
-            stored or shared with any third parties.
+            At The Privacyst, we respect and are committed to protecting your privacy. This Privacy Policy outlines our practices concerning the collection, use, and sharing of your personal information. By visiting our website, you agree to the terms outlined in this policy.
         </p>
-        <a href="/" class="btn btn-link">Home</a>
+        <h3><i class="fas fa-info-circle"></i> Data Collection</h3>
+        <p>
+            The Privacyst does not collect or store any personal data. Any data you input into the forms on this site is used solely for the purpose of providing the service requested and is not stored or shared with any third parties.
+        </p>
+        <h3><i class="fas fa-cookie"></i> Cookies</h3>
+        <p>
+            Our website does not use cookies or similar tracking technologies to collect information about your browsing activities.
+        </p>
+        <h3><i class="fas fa-edit"></i> Changes to This Privacy Policy</h3>
+        <p>
+            We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.
+        </p>
+        <h3><i class="fas fa-envelope"></i> Contact Us</h3>
+        <p>
+            If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us.
+        </p>
     </div>
-
     <script>
         function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const currentTheme = document.body.getAttribute('data-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', newTheme);
+            document.body.setAttribute('data-theme', newTheme);
+            document.querySelector('nav').setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
         }
-
-        // On page load, apply the user's preferred theme
         const savedTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', savedTheme);
+        document.body.setAttribute('data-theme', savedTheme);
+        document.querySelector('nav').setAttribute('data-theme', savedTheme);
     </script>
 </body>
 </html>
