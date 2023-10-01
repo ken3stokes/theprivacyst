@@ -1,0 +1,40 @@
+## Roadmap for v2.0.0
+
+### Enhancements:
+
+1. **Advanced Password Strength Metrics**:
+   - Implement machine learning models to predict password crack time.
+   - Integrate feedback on commonly used weak passwords and patterns.
+
+2. **Two-Factor Authentication (2FA) Integration**:
+   - Offer 2FA for user accounts to enhance security.
+   - Support popular 2FA methods such as TOTP, SMS, and push notifications.
+
+3. **Mobile Application**:
+   - Launch a mobile app for both Android and iOS platforms.
+   
+4. **Localization and Internationalization**:
+   - Support multiple languages to cater to a global user base.
+   - Adapt to regional security regulations and compliances.
+
+6. **API Access**:
+   - Offer API access for developers to integrate The Privacyst's features into their applications.
+   - Implement robust API security mechanisms.
+
+7. **Cloud Integration**:
+   - Allow users to save and sync their data across devices using popular cloud storage providers.
+   - Implement end-to-end encryption for cloud-stored data.
+
+### Bug Fixes:
+
+- Resolve minor UI glitches on certain devices.
+- Enhance error handling for failed key generation attempts.
+
+### Miscellaneous:
+
+- Update user documentation with new feature walkthroughs.
+- Host webinars and tutorials for user onboarding and education.
+
+---
+
+**Note**: Features in the roadmap are subject to change based on user feedback, technological advancements, and the project's strategic direction. We always prioritize user security and experience.
