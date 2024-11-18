@@ -11,6 +11,8 @@ Welcome to The Privacyst Web Utilities! This web application provides a set of h
 - Password Calculator: Generate strong and random passwords with custom length and character set.
 - Username Generator: Quickly create unique usernames.
 - Email Generator: Generate disposable email addresses with different domains.
+- Hash Generator: Generate secure hashes using multiple algorithms including MD5, SHA-256, and more
+- Password Analyzer: Analyze password strength and get security recommendations.
 
 ## Getting Started
 
