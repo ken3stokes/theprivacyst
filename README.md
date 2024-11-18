@@ -1,4 +1,4 @@
-# The Privacyst Web Utilities
+# The Privacyst
 
 ![Python](https://img.shields.io/badge/Python-3.8%20%7C%203.9%20%7C%203.10-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
