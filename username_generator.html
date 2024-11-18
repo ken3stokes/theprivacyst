@@ -1,96 +1,440 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-<style>
-    body {
-        font-family: 'Roboto', sans-serif;
-    }
-    .navbar, .btn-primary {
-        background-color: #3498db;
-    }
-    .btn-secondary {
-        background-color: #2ecc71;
-    }
-    .alert-info {
-        background-color: #3498db;
-        color: #fff;
-    }
-    :root {
-        --background-color-light: #ffffff;
-        --background-color-dark: #121212;
-        --text-color-light: #000000;
-        --text-color-dark: #e0e0e0;
-    }
-    [data-theme='light'] {
-        --background-color: var(--background-color-light);
-        --text-color: var(--text-color-light);
-    }
-    [data-theme='dark'] {
-        --background-color: var(--background-color-dark);
-        --text-color: var(--text-color-dark);
-    }
-    body {
-        background-color: var(--background-color);
-        color: var(--text-color);
-    }
-    .generated-data {
-        background-color: #ffffff; /* white background */
-        color: #000000; /* black text */
-    }
-</style>
-<title>Username Generator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Username Generator - The Privacyst</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #06b6d4;
+            --primary-dark: #0891b2;
+            --secondary: #3b82f6;
+            --accent: #22d3ee;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
+            --success: #22c55e;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.25rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-brand:hover {
+            transform: translateY(-1px);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-1px);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            padding-top: 7rem;
+        }
+
+        .generator-card {
+            background: linear-gradient(145deg, var(--bg-card), #1a2234);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            animation: slideIn 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .form-group:nth-child(2) { animation-delay: 0.1s; }
+        .form-group:nth-child(3) { animation-delay: 0.2s; }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        select.form-control {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        select.form-control:hover {
+            border-color: rgba(6, 182, 212, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        select.form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.2);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 1.2rem;
+            height: 1.2rem;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.03);
+            cursor: pointer;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            color: white;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .result-section {
+            margin-top: 2rem;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .result-container {
+            margin: 1rem 0;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .result-container:hover {
+            border-color: rgba(6, 182, 212, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .result-container pre {
+            margin: 0;
+            font-family: 'Inter', monospace;
+            font-size: 1.2rem;
+            color: var(--text);
+            padding-right: 3rem;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--primary);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+        }
+
+        .copy-btn:hover {
+            background: rgba(6, 182, 212, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--success);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            margin-top: 2rem;
+            padding: 0.8rem 0;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        .info-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+                padding-top: 6rem;
+            }
+
+            .generator-card {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .nav-content {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            .nav-link {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <div class="d-flex justify-content-end">
-        <button onclick="toggleTheme()" class="btn btn-outline-secondary btn-sm">Toggle Dark Mode</button>
-    </div>
-    {% if error_message %}
-    <div class="alert alert-danger">
-        {{ error_message }}
-    </div>
-{% endif %}
+    <nav>
+        <div class="nav-content">
+            <a href="/" class="nav-brand">
+                <span>The Privacyst</span>
+            </a>
+            <div class="nav-links">
+                <a href="user_guide" class="nav-link">User Guide</a>
+                <a href="privacy_policy" class="nav-link">Privacy Policy</a>
+                <a href="about" class="nav-link">About</a>
+            </div>
+        </div>
+    </nav>
 
-    <h1 class="my-4">Username Generator</h1>
-    <form method="POST" class="mb-3">
-        <button type="submit" class="btn btn-primary">Generate Username</button>
-    </form>
-    {% if username %}
-    <div>
-        <h2>Generated Username</h2>
-        <pre id="username" class="p-2 rounded generated-data">{{ username }}</pre>
-        <button onclick="copyToClipboard('#username')" class="btn btn-secondary">Copy to Clipboard</button>
+    <div class="container">
+        <div class="generator-card">
+            <h1>Username Generator</h1>
+
+            <form method="POST">
+                <div class="options-grid">
+                    <div class="form-group">
+                        <label class="form-label">Style</label>
+                        <select name="style" class="form-control">
+                            <option value="quantum">Quantum (e.g., q_xyz123)</option>
+                            <option value="neural">Neural (e.g., quantum_mind)</option>
+                            <option value="classic">Classic (e.g., cyberhash)</option>
+                            <option value="random">Random Style</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Options</label>
+                        <div class="checkbox-group">
+                            <input type="checkbox" name="numbers" id="numbers" checked>
+                            <label for="numbers">Include numbers</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" name="special" id="special">
+                            <label for="special">Include special characters (_-.)</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" name="memorable" id="memorable" checked>
+                            <label for="memorable">Make memorable</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Generate Username</button>
+            </form>
+
+            {% if username %}
+            <div class="result-section">
+                <div class="result-container">
+                    <pre id="username">{{ username }}</pre>
+                    <button class="copy-btn" onclick="copyToClipboard('username', 'Username copied!')">📋</button>
+                </div>
+                <p class="info-text">This username was generated securely and is completely random. Generate as many as you need!</p>
+            </div>
+            {% endif %}
+
+            <a href="/" class="back-link">← Back to Home</a>
+        </div>
     </div>
-    {% endif %}
-    <a href="/" class="btn btn-link">Home</a>
-    </div>
 
-<script>
-function copyToClipboard(element) {
-    var text = document.querySelector(element).innerText;
-    var inputElement = document.createElement('input');
-    inputElement.type = 'text';
-    inputElement.value = text;
-    document.body.appendChild(inputElement);
-    inputElement.select();
-    document.execCommand('copy');
-    document.body.removeChild(inputElement);
-}
+    <div id="toast" class="toast"></div>
 
-function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-}
+    <script>
+        function copyToClipboard(elementId, message) {
+            const text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                showToast(message);
+            }).catch(err => {
+                showToast('Failed to copy text');
+            });
+        }
 
-// On page load, apply the user's preferred theme
-const savedTheme = localStorage.getItem('theme') || 'light';
-document.documentElement.setAttribute('data-theme', savedTheme);
-</script>
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
 </body>
 </html>
