@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Generator - The Privacyst</title>
+    <style>
+        body {
+            background: #0f172a;
+            color: #e2e8f0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background: #0f172a;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .nav-link {
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 0 1rem;
+        }
+
+        .nav-link:hover {
+            color: #06b6d4;
+        }
+
+        .container {
+            width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .generator-card {
+            background: #1e293b;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        h1 {
+            color: #06b6d4;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #06b6d4;
+        }
+
+        select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            color: #e2e8f0;
+            margin-bottom: 1rem;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .btn {
+            background: transparent;
+            border: 1px solid #06b6d4;
+            color: #06b6d4;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background: rgba(6, 182, 212, 0.1);
+        }
+
+        .result-container {
+            margin-top: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #06b6d4;
+            padding: 1rem;
+            position: relative;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: transparent;
+            border: none;
+            color: #06b6d4;
+            cursor: pointer;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 2rem;
+            color: #06b6d4;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="user_guide" class="nav-link">User Guide</a>
+        <a href="privacy_policy" class="nav-link">Privacy Policy</a>
+        <a href="about" class="nav-link">About</a>
+    </nav>
+
+    <div class="container">
+        <div class="generator-card">
+            <h1>Hash Generator</h1>
+
+            <form method="POST">
+                <div class="form-group">
+                    <label>Hash Algorithm</label>
+                    <select name="algorithm">
+                        <option value="md5">MD5</option>
+                        <option value="sha1">SHA-1</option>
+                        <option value="sha256">SHA-256</option>
+                        <option value="sha384">SHA-384</option>
+                        <option value="sha512">SHA-512</option>
+                        <option value="sha3_256">SHA3-256</option>
+                        <option value="sha3_512">SHA3-512</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Input Text</label>
+                    <textarea name="input_text" placeholder="Enter text to hash"></textarea>
+                </div>
+
+                <button type="submit" class="btn">Generate Hash</button>
+            </form>
+
+            {% if hash_result %}
+            <div class="result-container">
+                <pre id="hash-result">{{ hash_result }}</pre>
+                <button class="copy-btn" onclick="copyToClipboard()">📋</button>
+            </div>
+            {% endif %}
+
+            <a href="/" class="back-link">← Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard() {
+            const hash = document.getElementById('hash-result').textContent;
+            navigator.clipboard.writeText(hash).then(() => {
+                alert('Hash copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>

@@ -3,126 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SecureOps Tool User Guide</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>User Guide - The Privacyst</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #e2e8f0;
+            --primary: #06b6d4;
+            --primary-dark: #0891b2;
+            --secondary: #3b82f6;
+            --accent: #22d3ee;
+            --card-bg: #1e293b;
+        }
+
         body {
-            font-family: 'Roboto', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            margin: 0;
             line-height: 1.6;
+            min-height: 100vh;
         }
-        .container {
-            padding: 30px;
-        }
-        h1, h2, h3 {
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-        body[data-theme='dark'] {
-            background-color: #121212;
-            color: #e0e0e0;
-        }
+
         nav {
-            margin-bottom: 20px;
-            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
-        nav[data-theme='dark'] {
-            background-color: #121212;
-            border-color: #121212;
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .btn-outline-secondary {
-            border-color: #007bff;
-            color: #007bff;
+
+        .nav-brand {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .btn-outline-secondary:hover {
-            background-color: #007bff;
-            color: #fff;
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
         }
-        footer {
-            margin-top: 20px;
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-1px);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .guide-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 2rem;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
             text-align: center;
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-top: 1px solid #e7e7e7;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
         }
-        footer[data-theme='dark'] {
-            background-color: #121212;
-            border-color: #121212;
-            color: #e0e0e0;
+
+        .tool-section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tool-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px -5px rgba(6, 182, 212, 0.1);
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .tool-description {
+            font-size: 1.1rem;
+            color: rgba(226, 232, 240, 0.9);
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem;
+        }
+
+        .feature-list li {
+            padding: 0.8rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: "→";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+        }
+
+        .feature-list ul {
+            list-style: none;
+            padding-left: 2rem;
+            margin: 0.5rem 0;
+        }
+
+        .tips {
+            background: rgba(6, 182, 212, 0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .tips strong {
+            color: var(--primary);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            margin-top: 2rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: var(--primary);
+            color: var(--bg-color);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .guide-card {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .tool-description {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
-<body data-theme="light">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" data-theme="light">
-        <div class="container">
-            <a class="navbar-brand" href="#">The Privacyst</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="user_guide">User Guide</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Release_Notes">Release Notes</a>
-                    </li>
-                    <li>
-                    <a class="nav-link" href="privacy_policy">Privacy Policy</a>
-                </li>
-                </ul>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="/" class="nav-brand">The Privacyst</a>
+            <div class="nav-links">
+          
+                <a href="user_guide" class="nav-link">User Guide</a>
+                <a href="privacy_policy" class="nav-link">Privacy Policy</a>
+                <a href="release_notes" class="nav-link">Release Notes</a>
+                <a href="about" class="nav-link">About</a>
             </div>
         </div>
     </nav>
+
     <div class="container">
-        <div class="d-flex justify-content-end">
-            <button onclick="toggleTheme()" class="btn btn-outline-secondary btn-sm">Toggle Dark Mode</button>
+        <div class="guide-card">
+            <h1>User Guide</h1>
+
+            <div class="tool-section">
+                <h2>Password Calculator</h2>
+                <div class="tool-description">Generate strong, unique passwords for all your accounts.</div>
+                <ul class="feature-list">
+                    <li>Choose password length between 8 and 128 characters</li>
+                    <li>Select character types: uppercase, lowercase, numbers, special characters</li>
+                    <li>Generate secure, random passwords</li>
+                    <li>Copy generated passwords with one click</li>
+                </ul>
+                <div class="tips">
+                    <strong>Tip:</strong> For maximum security, use all character types and a length of at least 12 characters.
+                </div>
+            </div>
+
+            <div class="tool-section">
+                <h2>SSH Key Generator</h2>
+                <div class="tool-description">Create secure SSH keys for remote access.</div>
+                <ul class="feature-list">
+                    <li>Choose between RSA, DSA, ECDSA, and Ed25519 key types</li>
+                    <li>Select key length (2048 or 4096 bits for RSA)</li>
+                    <li>Generate both public and private keys</li>
+                    <li>Copy keys directly to clipboard</li>
+                </ul>
+                <div class="tips">
+                    <strong>Tip:</strong> Ed25519 keys are recommended for modern systems due to their security and efficiency.
+                </div>
+            </div>
+
+            <div class="tool-section">
+                <h2>Username Generator</h2>
+                <div class="tool-description">Create unique, memorable usernames.</div>
+                <ul class="feature-list">
+                    <li>Generate random, unique usernames</li>
+                    <li>Copy generated usernames instantly</li>
+                    <li>Create professional-looking identifiers</li>
+                </ul>
+                <div class="tips">
+                    <strong>Tip:</strong> Generated usernames are designed to be memorable while maintaining uniqueness.
+                </div>
+            </div>
+
+            <div class="tool-section">
+                <h2>Email Generator</h2>
+                <div class="tool-description">Create realistic email addresses for testing or demonstration purposes.</div>
+                <ul class="feature-list">
+                    <li>Generate realistic email addresses using common first and last names</li>
+                    <li>Multiple email formats:
+                        <ul>
+                            <li>First.Last (e.g., john.smith42)</li>
+                            <li>First Initial.Last (e.g., j.smith123)</li>
+                            <li>FirstLast (e.g., johnsmith789)</li>
+                            <li>Last.First (e.g., smith.john456)</li>
+                        </ul>
+                    </li>
+                    <li>Choose from popular email domains (Gmail, Outlook, ProtonMail)</li>
+                    <li>Automatically adds realistic number suffixes</li>
+                    <li>Copy generated emails with one click</li>
+                </ul>
+                <div class="tips">
+                    <strong>Tip:</strong> Each generated email follows common naming conventions used by real email providers, making them perfect for testing or demonstration purposes.
+                </div>
+            </div>
+
+            <a href="/" class="back-link">← Back to Home</a>
         </div>
-        <h2><i class="fas fa-book"></i> SecureOps Tool User Guide</h2>
-        <p>Welcome to the SecureOps Tool User Guide. This comprehensive guide will walk you through the features and functionalities of our tool, ensuring a seamless user experience.</p>
-
-        <div class="anchor" id="introduction"></div>
-        <h2>Introduction</h2>
-        <p>The SecureOps Tool is a web-based application designed to provide users with secure RSA key generation, an interactive password strength calculator, and a username and email generator. Whether you're looking to generate encryption keys, evaluate the strength of your passwords, or generate unique usernames and emails, our tool is designed with user-friendliness and security in mind.</p>
-       <h2 id="getting-started">Getting Started</h2>
-            <p>Access the SecureOps Tool by navigating to <a href="http://www.secureopstool.com">www.secureopstool.com</a> on your preferred web browser. For optimal performance, ensure you are using a modern web browser and have an active internet connection.</p>
-            <h2 id="rsa-key-generation">RSA Key Generation</h2>
-            <p>Generate a pair of RSA keys: a public key (for encryption) and a private key (for decryption). To generate keys, select your desired key length and click on the "Generate" button. Once created, download the keys directly to your device.</p>
-            <h2 id="password-strength-calculator">Password Strength Calculator</h2>
-            <p>Evaluate the strength of your passwords using our interactive calculator. Enter your password to receive feedback on its strength and suggestions for improvement.</p>
-            <h2 id="username-and-email-generator">Username and Email Generator</h2>
-            <p>Generate unique usernames and email addresses. Ideal for sign-ups, testing, and other applications.</p>
-            <h2 id="tips-and-best-practices">Tips and Best Practices</h2>
-            <ul>
-                <li>Always store RSA private keys securely.</li>
-                <li>Regularly update your keys and passwords.</li>
-                <li>Avoid using common phrases or dictionary words in passwords.</li>
-            </ul>
-            <h2 id="faqs">Frequently Asked Questions</h2>
-            <ul>
-                <li>How safe is it to generate keys online?: While our tool prioritizes user security and data privacy, always exercise caution when generating keys online. We do not store or have access to the keys generated.</li>
-                <li>How is password strength calculated?: Password strength is calculated based on several criteria: length, use of varied characters, numbers, and symbols, and avoidance of easily guessable information.</li>
-            </ul>
-            <h2 id="contact-and-support">Contact and Support</h2>
-            <p>For questions, feedback, or support, reach out to us at <a href="mailto:support@secureopstool.com">support@secureopstool.com</a>.</p>
-
     </div>
-    <script>
-        function toggleTheme() {
-            const currentTheme = document.body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            document.body.setAttribute('data-theme', newTheme);
-            document.querySelector('nav').setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        }
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.body.setAttribute('data-theme', savedTheme);
-        document.querySelector('nav').setAttribute('data-theme', savedTheme);
-    </script>
 </body>
 </html>

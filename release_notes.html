@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Release Notes - The Privacyst</title>
+    <style>
+        :root {
+            --bg-color: #0F1629;
+            --card-bg: #1a1f2e;
+            --text-color: #e2e8f0;
+            --primary: #00E5FF;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .site-logo {
+            width: 24px;
+            height: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .release-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--primary);
+            position: absolute;
+            left: -1.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: var(--text-color);
+            opacity: 0.6;
+            margin-bottom: 1rem;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        .version {
+            display: inline-block;
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--primary);
+            padding: 0.2rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin-left: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="nav-brand">
+            <svg class="site-logo" viewBox="0 0 100 100">
+                <path d="M10 50 C30 20 70 20 90 50 C70 80 30 80 10 50 Z" fill="none" stroke="#00E5FF" stroke-width="4"/>
+                <circle cx="50" cy="50" r="15" fill="#00E5FF"/>
+                <circle cx="50" cy="50" r="8" fill="#0F1629"/>
+            </svg>
+            <span>The Privacyst</span>
+        </a>
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+            <a href="{{ url_for('user_guide') }}" class="nav-link">User Guide</a>
+            <a href="{{ url_for('privacy_policy') }}" class="nav-link">Privacy Policy</a>
+            <a href="{{ url_for('about') }}" class="nav-link">About</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="release-card">
+            <h1>Release Notes <span class="version">v1.2.0.0</span></h1>
+
+            <h2>Major Updates</h2>
+            <h3>Complete Visual Overhaul</h3>
+            <ul>
+                <li>Implemented a modern Web3-inspired dark theme</li>
+                <li>Added dynamic glowing effects for better user interaction</li>
+                <li>Introduced new cyber-styled icon and branding</li>
+                <li>Improved overall layout and responsiveness</li>
+            </ul>
+
+            <h2>New Features</h2>
+            <h3>Hash Generator</h3>
+            <ul>
+                <li>Added new hash generation tool supporting multiple algorithms (MD5, SHA-1, SHA-256, SHA-384, SHA-512)</li>
+                <li>Included real-time hash generation</li>
+                <li>Support for text input hashing</li>
+            </ul>
+
+            <h2>Enhancements</h2>
+            <h3>UI/UX Improvements</h3>
+            <ul>
+                <li>Redesigned card layout for better feature presentation</li>
+                <li>Enhanced button interactions with glowing effects</li>
+                <li>Improved navigation with cleaner interface</li>
+                <li>Added consistent styling across all tools</li>
+            </ul>
+
+            <h3>Password Strength Analyzer Updates</h3>
+            <ul>
+                <li>Enhanced analysis algorithms</li>
+                <li>Added detailed pattern detection</li>
+                <li>Improved security recommendations</li>
+                <li>Real-time strength calculation</li>
+            </ul>
+
+            <h2>Technical Updates</h2>
+            <h3>Backend Improvements</h3>
+            <ul>
+                <li>Optimized route handling</li>
+                <li>Enhanced error management</li>
+                <li>Improved API response structure</li>
+                <li>Better Flask template integration</li>
+            </ul>
+
+            <h2>Conclusion</h2>
+            <p>This major update focuses on both aesthetic and functional improvements, making The Privacyst more modern and user-friendly while maintaining its commitment to security and privacy. The new design and features enhance the overall user experience while providing more robust tools for security needs.</p>
+        </div>
+    </div>
+    
+    <div id="toast" class="toast"></div>
+    <footer>
+        <p>© 2024 The Privacyst - All rights reserved</p>
+        <div>
+            <a href="https://github.com/k3nstokes" target="_blank">GitHub</a>
+            <a href="https://medium.com/@kenstokes" target="_blank">Medium</a>
+        </div>
+    </footer>
+</body>
+</html>

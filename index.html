@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>The Privacyst</title>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+   <style>
+       :root {
+           --bg-color: #0f172a;
+           --card-bg: #1e293b;
+           --text-color: #e2e8f0;
+           --primary: #06b6d4;
+           --primary-dark: #0891b2;
+           --border: rgba(255, 255, 255, 0.1);
+       }
+
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
+
+       body {
+           background: var(--bg-color);
+           color: var(--text-color);
+           font-family: 'Inter', system-ui, -apple-system, sans-serif;
+           line-height: 1.6;
+           min-height: 100vh;
+           padding-top: 0;
+           position: relative;
+       }
+
+       nav {
+           background: rgba(15, 23, 42, 0.95);
+           backdrop-filter: blur(10px);
+           border-bottom: 1px solid var(--border);
+           padding: 1.2rem 0;
+           position: fixed;
+           top: 0;
+           left: 0;
+           right: 0;
+           width: 100%;
+           z-index: 1000;
+           box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+       }
+
+       .nav-content {
+           max-width: 1200px;
+           margin: 0 auto;
+           padding: 0 2rem;
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+       }
+
+       .nav-brand {
+           display: flex;
+           align-items: center;
+           gap: 0.75rem;
+           text-decoration: none;
+           color: var(--primary);
+           font-weight: 600;
+       }
+
+       .site-logo {
+           width: 24px;
+           height: 24px;
+       }
+
+       .nav-links {
+           display: flex;
+           gap: 1rem;
+       }
+
+       .nav-link {
+           color: var(--text-color);
+           text-decoration: none;
+           padding: 0.8rem 1.5rem;
+           border-radius: 8px;
+           transition: all 0.3s ease;
+           font-weight: 500;
+       }
+
+       .nav-link:hover {
+           color: var(--primary);
+           background: rgba(255, 255, 255, 0.05);
+       }
+
+       .container {
+           max-width: 1200px;
+           margin: 0 auto;
+           padding: 2rem;
+           padding-top: calc(4rem + 72px); /* Add extra padding to account for fixed nav */
+       }
+
+       .hero {
+           text-align: center;
+           margin: -1rem 0 0.5rem 0;
+       }
+
+       .hero h1 {
+           color: var(--primary);
+           font-size: 3rem;
+           margin-bottom: 0.5rem;
+       }
+
+       .grid {
+           display: grid;
+           grid-template-columns: repeat(3, 1fr);
+           gap: 2rem;
+           margin: 3rem auto 0;
+           max-width: 1200px;
+       }
+
+       .card {
+           background: var(--card-bg);
+           border: 1px solid var(--border);
+           border-radius: 8px;
+           padding: 2rem;
+       }
+
+       .card h3 {
+           color: var(--primary);
+           font-size: 1.25rem;
+           margin-bottom: 1rem;
+           font-weight: 500;
+       }
+
+       .card p {
+           color: var(--text-color);
+           opacity: 0.8;
+           margin-bottom: 2rem;
+       }
+
+       .btn {
+           display: inline-block;
+           background: transparent;
+           color: var(--primary);
+           border: 1px solid var(--primary);
+           padding: 0.6rem 1.2rem;
+           border-radius: 4px;
+           text-decoration: none;
+           transition: all 0.3s ease;
+       }
+
+       .btn:hover {
+           background: rgba(0, 229, 255, 0.1);
+           box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+       }
+
+       footer {
+           text-align: center;
+           padding: 2rem;
+           margin-top: 4rem;
+       }
+
+       footer p {
+           color: var(--text-color);
+           opacity: 0.6;
+           margin-bottom: 1rem;
+       }
+
+       footer a {
+           color: var(--primary);
+           text-decoration: none;
+           margin: 0 1rem;
+       }
+   </style>
+</head>
+<body>
+   <nav>
+       <div class="nav-content">
+           <a href="/" class="nav-brand">
+               <svg class="site-logo" viewBox="0 0 100 100">
+                   <path d="M10 50 C30 20 70 20 90 50 C70 80 30 80 10 50 Z" fill="none" stroke="currentColor" stroke-width="4"/>
+                   <circle cx="50" cy="50" r="15" fill="currentColor"/>
+                   <circle cx="50" cy="50" r="8" fill="#0f172a"/>
+               </svg>
+               <span>The Privacyst</span>
+           </a>
+           <div class="nav-links">
+               <a href="user_guide" class="nav-link">User Guide</a>
+               <a href="privacy_policy" class="nav-link">Privacy Policy</a>
+               <a href="release_notes" class="nav-link">Release Notes</a>
+               <a href="about" class="nav-link">About</a>
+           </div>
+       </div>
+   </nav>
+
+   <div class="container">
+       <div class="hero">
+           <h1>The Privacyst</h1>
+           <p>Your one-stop solution for secure and random data generation.</p>
+       </div>
+
+       <div class="grid" id="features">
+           <div class="card">
+               <h3>Password Calculator</h3>
+               <p>Generate strong passwords with customizable length and character sets.</p>
+               <a href="{{ url_for('password_calculator') }}" class="btn">Generate Password</a>
+           </div>
+
+           <div class="card">
+               <h3>SSH Key Generator</h3>
+               <p>Create secure SSH keys with RSA, DSA, ECDSA, and Ed25519 options.</p>
+               <a href="{{ url_for('ssh_key_generator') }}" class="btn">Generate Keys</a>
+           </div>
+
+           <div class="card">
+               <h3>Username Generator</h3>
+               <p>Generate random usernames for quick and easy account creation.</p>
+               <a href="{{ url_for('username_generator') }}" class="btn">Generate Username</a>
+           </div>
+
+           <div class="card">
+               <h3>Email Generator</h3>
+               <p>Create random email addresses with selectable domains.</p>
+               <a href="{{ url_for('email_generator') }}" class="btn">Generate Email</a>
+           </div>
+
+           <div class="card">
+               <h3>Hash Generator</h3>
+               <p>Generate secure hashes using multiple algorithms including MD5, SHA-256, and more.</p>
+               <a href="{{ url_for('hash_generator') }}" class="btn">Generate Hash</a>
+           </div>
+
+           <div class="card">
+               <h3>Password Strength Analyzer</h3>
+               <p>Analyze password strength and get security recommendations.</p>
+               <a href="{{ url_for('password_strength') }}" class="btn">Analyze Password</a>
+           </div>
+       </div>
+   </div>
+
+   <footer>
+       <p> 2024 The Privacyst - All rights reserved</p>
+       <div>
+           <a href="https://github.com/k3nstokes" target="_blank">GitHub</a>
+           <a href="https://medium.com/@kenstokes" target="_blank">Medium</a>
+       </div>
+   </footer>
+</body>
+</html>

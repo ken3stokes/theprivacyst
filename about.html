@@ -3,64 +3,288 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Privacyst - One Pager</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>About - The Privacyst</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #06b6d4;
+            --primary-dark: #0891b2;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text: #e2e8f0;
+        }
+
         body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
+            background: var(--bg-dark);
+            color: var(--text);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             margin: 0;
             padding: 0;
+            line-height: 1.6;
         }
-        .container {
-            padding: 30px;
-        }
-        h1, h2, h3, p {
-            margin-bottom: 20px;
-        }
-        h1 {
-            margin-top: 20px;
-        }
-        img.screenshot {
-            width: 100%;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 5px;
-        }
-        footer {
+
+        nav {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.2rem 0;
             text-align: center;
-            padding: 15px;
-            background-color: #f1f1f1;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            margin: 0 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-1px);
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+
+        .about-card {
+            background: linear-gradient(145deg, var(--bg-card), #1a2234);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 2rem;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary), #38bdf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .section {
+            margin-bottom: 3.5rem;
+            animation: fadeIn 0.6s ease-out;
+            padding: 2rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px -5px rgba(6, 182, 212, 0.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--primary-dark));
+            border-radius: 2px;
+            opacity: 0.8;
+        }
+
+        p {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            color: rgba(226, 232, 240, 0.9);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            gap: 1rem;
+        }
+
+        li {
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        li:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        li::before {
+            content: "→";
+            color: var(--primary);
+            margin-right: 1rem;
+            font-weight: bold;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+            transform: translateY(-2px);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 2rem 1rem;
+            }
+            
+            .about-card {
+                padding: 2rem 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .nav-link {
+                padding: 0.6rem 1rem;
+                margin: 0 0.3rem;
+                font-size: 0.9rem;
+            }
+
+            .section {
+                padding: 1rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
+    <nav>
+        <a href="/" class="nav-link">Home</a>
+        <a href="user_guide" class="nav-link">User Guide</a>
+        <a href="privacy_policy" class="nav-link">Privacy Policy</a>
+        <a href="release_notes" class="nav-link">Release Notes</a>
+        <a href="about" class="nav-link">About</a>
+    </nav>
+
     <div class="container">
-        <h1><i class="fas fa-shield-alt"></i> The Privacyst</h1>
-        
-        <h2><i class="fas fa-info-circle"></i> Introduction</h2>
-        <p>The Privacyst is a cutting-edge security application designed to protect your digital assets. Focused on user-friendly solutions, it offers robust password generation, secure SSH key creation, and more to ensure your online presence remains uncompromised.</p>
-        
-        <h2><i class="fas fa-key"></i> Key Features</h2>
-        <p><strong>Password Calculator:</strong> Empower your online security with our advanced password calculator, designed to create robust and unique passwords that thwart hacking attempts and safeguard your accounts.</p>
-        <p><strong>SSH Key Generator:</strong> Enhance data protection with our SSH Key Generator. Secure your communications and data transfers with uniquely generated SSH keys, ensuring a fortified defense against unauthorized access.</p>
-        
-        <h2><i class="fas fa-thumbs-up"></i> Benefits</h2>
-        <p>The Privacyst offers unparalleled security solutions, providing peace of mind and robust defense mechanisms against digital threats. Experience user-centric design, advanced security features, and a commitment to safeguarding your digital footprint.</p>
-        
-        <h2><i class="fas fa-lightbulb"></i> Use Cases</h2>
-        <p>Whether you're protecting sensitive communications, securing online accounts, or safeguarding digital assets, The Privacyst is the go-to solution for individuals and businesses seeking advanced online security tools.</p>
-        
-        <h2><i class="fas fa-envelope"></i> Contact Information</h2>
-        <p>For inquiries, support, or feedback, please reach out to us at <a href="mailto:hello@theprivacyst.com">hello@theprivacyst.com</a>.</p>
-        
-        <h2><i class="fas fa-hand-point-right"></i> Call to Action</h2>
-        <p>Ready to fortify your digital security? Join the community of users who trust The Privacyst to protect their online presence. Download now and experience advanced security at your fingertips!</p>
+        <div class="about-card">
+            <h1>About The Privacyst</h1>
+
+            <div class="section">
+                <h2>Our Mission</h2>
+                <p>The Privacyst is dedicated to providing secure, private, and reliable tools for your digital identity needs. We believe in putting your privacy first, always.</p>
+            </div>
+
+            <div class="section">
+                <h2>Key Features</h2>
+                <ul>
+                    <li>Client-side generation of all secure data</li>
+                    <li>Zero data collection or storage</li>
+                    <li>Open source transparency</li>
+                    <li>Modern cryptographic standards</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Technology</h2>
+                <p>Built with cutting-edge web technologies and industry-standard cryptographic libraries, ensuring both security and performance. Our commitment to open-source development means full transparency in how we protect your data.</p>
+            </div>
+
+            <div class="section">
+                <h2>Contact</h2>
+                <p>Have questions or suggestions? We'd love to hear from you!</p>
+                <p>hello@theprivacyst.com</p>
+                <div class="contact-links">
+                    <a href="https://github.com/ken3stokes" class="social-link">GitHub</a>
+                    <a href="https://medium.com/@kenstokes" class="social-link">Medium</a>
+                </div>
+            </div>
+
+            <a href="/" class="back-link">← Back to Home</a>
+        </div>
     </div>
-    <footer>
-        <p>&copy; 2023 The Privacyst. All rights reserved. Safeguarding Your Digital World!</p>
-    </footer>
 </body>
 </html>
